@@ -33,7 +33,7 @@ public class BackEndDBRequestThread extends Thread {
 		
 		try {
 			
-			System.out.println(Thread.currentThread().getName() + ": " + System.currentTimeMillis() + ": " + "Connecting");
+			System.out.println(Thread.currentThread().getName() + ": " + "Connecting");
 //			log.writeLog(Thread.currentThread().getName() + ": " + "Connecting");
 			
 			CloseableHttpResponse response = client.execute(get);
@@ -48,7 +48,7 @@ public class BackEndDBRequestThread extends Thread {
 			
 			String resultCode = jsonContent.getString("resultCode");
 			
-			System.out.println(Thread.currentThread().getName() + ": " + System.currentTimeMillis() + ": " + response.getStatusLine().getStatusCode() + " " + response.getStatusLine().getReasonPhrase() + ". AVS code: " + resultCode + " (backend " + response.getHeaders("Set-Cookie")[1].getValue().substring(8,12) + ")");
+			System.out.println(Thread.currentThread().getName() + ": " + response.getStatusLine().getStatusCode() + " " + response.getStatusLine().getReasonPhrase() + ". AVS code: " + resultCode + " (backend " + response.getHeaders("Set-Cookie")[1].getValue().substring(8,12) + ")");
 //			log.writeLog(Thread.currentThread().getName() + ": " + response.getStatusLine().getStatusCode() + " " + response.getStatusLine().getReasonPhrase() + ". AVS code: " + resultCode + " (backend " + response.getHeaders("Set-Cookie")[1].getValue().substring(8,12) + ")");
 			response.close();
 			
